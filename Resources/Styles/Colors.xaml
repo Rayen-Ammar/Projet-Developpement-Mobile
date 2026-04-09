@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- 
+        FILE: Colors.xaml
+        LOCATION: Resources/Styles/
+        ROLE: Defines the global color palette for the application.
+        DESIGN: Ultra Premium Dark Theme with Gold and Emerald accents.
+    -->
+
+    <!-- Core Brand Colors -->
+    <Color x:Key="Primary">#FFD700</Color> <!-- Gold -->
+    <Color x:Key="PrimaryDark">#B8860B</Color> <!-- Dark Gold -->
+    <Color x:Key="Secondary">#121212</Color> <!-- Deep Black/Grey -->
+    <Color x:Key="Tertiary">#1E1E1E</Color> <!-- Surface Grey -->
+
+    <!-- Background and Text -->
+    <Color x:Key="Background">#0F0F0F</Color> <!-- Very Dark Background -->
+    <Color x:Key="Surface">#1A1A1A</Color> <!-- Card Surface -->
+    <Color x:Key="TextPrimary">#FFFFFF</Color> <!-- White -->
+    <Color x:Key="TextSecondary">#A0A0A0</Color> <!-- Muted Grey -->
+    <Color x:Key="TextOnPrimary">#000000</Color> <!-- Black on Gold -->
+
+    <!-- Semantic Colors -->
+    <Color x:Key="Success">#00C853</Color> <!-- Emerald Green for Income -->
+    <Color x:Key="Danger">#FF3D00</Color> <!-- Vivid Red for Expenses -->
+    <Color x:Key="Warning">#FFAB00</Color>
+    <Color x:Key="Info">#2979FF</Color>
+
+    <!-- Grays for Borders and Dividers -->
+    <Color x:Key="Gray100">#1E1E1E</Color>
+    <Color x:Key="Gray200">#2C2C2C</Color>
+    <Color x:Key="Gray300">#3D3D3D</Color>
+    <Color x:Key="Gray400">#4E4E4E</Color>
+    <Color x:Key="Gray500">#757575</Color>
+    <Color x:Key="Gray600">#9E9E9E</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}" />
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}" />
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource Background}" />
+    <SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource Surface}" />
+    
+    <!-- Gradients for Premium Look -->
+    <LinearGradientBrush x:Key="PremiumGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#FFD700" Offset="0.1" />
+        <GradientStop Color="#B8860B" Offset="1.0" />
+    </LinearGradientBrush>
+
+</ResourceDictionary>

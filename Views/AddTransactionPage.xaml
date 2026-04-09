@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ChahriyaPro.ViewModels"
+             x:DataType="viewmodel:AddTransactionViewModel"
+             x:Class="ChahriyaPro.Views.AddTransactionPage"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Background}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <!-- Transaction Type Selector (Revenue / Expense) -->
+            <Label Text="Type de Transaction" Style="{StaticResource SubtitleLabel}" />
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+
+                <!-- EXPENSE BUTTON -->
+                <Button Grid.Column="0" 
+                        Text="Dépense" 
+                        BackgroundColor="{StaticResource Danger}"
+                        Command="{Binding SetTransactionTypeCommand}" 
+                        CommandParameter="False"
+                        CornerRadius="15" />
+
+                <!-- INCOME BUTTON -->
+                <Button Grid.Column="1" 
+                        Text="Revenu" 
+                        BackgroundColor="{StaticResource Success}"
+                        Command="{Binding SetTransactionTypeCommand}" 
+                        CommandParameter="True"
+                        CornerRadius="15" />
+            </Grid>
+
+            <!-- Amount Input Field -->
+            <Label Text="Montant (DT)" Style="{StaticResource SubtitleLabel}" />
+            <Frame Style="{StaticResource CardFrame}" Padding="0" BorderColor="{StaticResource Gray300}">
+                <Entry Placeholder="0.000" 
+                       Keyboard="Numeric" 
+                       Text="{Binding Amount}" 
+                       BackgroundColor="Transparent"
+                       Margin="15,0"
+                       HeightRequest="60" />
+            </Frame>
+
+            <!-- Date Selection Field -->
+            <Label Text="Date" Style="{StaticResource SubtitleLabel}" />
+            <Frame Style="{StaticResource CardFrame}" Padding="0" BorderColor="{StaticResource Gray300}">
+                <DatePicker Date="{Binding Date}" 
+                            Format="dd/MM/yyyy" 
+                            HeightRequest="60"
+                            Margin="15,0" />
+            </Frame>
+
+            <!-- Category Picker Field -->
+            <Label Text="Catégorie" Style="{StaticResource SubtitleLabel}" />
+            <Frame Style="{StaticResource CardFrame}" Padding="0" BorderColor="{StaticResource Gray300}">
+                <Picker ItemsSource="{Binding Categories}" 
+                        ItemDisplayBinding="{Binding Name}" 
+                        SelectedItem="{Binding SelectedCategory}" 
+                        Title="Sélectionner une catégorie" 
+                        HeightRequest="60"
+                        Margin="15,0" />
+            </Frame>
+
+            <!-- Description Input Field -->
+            <Label Text="Description" Style="{StaticResource SubtitleLabel}" />
+            <Frame Style="{StaticResource CardFrame}" Padding="0" BorderColor="{StaticResource Gray300}">
+                <Entry Placeholder="Ex: Courses, Salaire, Taxi..." 
+                       Text="{Binding Description}" 
+                       BackgroundColor="Transparent"
+                       Margin="15,0"
+                       HeightRequest="60" />
+            </Frame>
+
+            <!-- Action Buttons Area -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,30,0,0">
+                <Button Grid.Column="0" 
+                        Text="Annuler" 
+                        Style="{StaticResource OutlinedButton}"
+                        Command="{Binding CancelCommand}" />
+                <Button Grid.Column="1" 
+                        Text="Enregistrer" 
+                        Command="{Binding SaveTransactionCommand}" />
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

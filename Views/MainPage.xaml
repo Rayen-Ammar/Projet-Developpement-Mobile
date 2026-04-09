@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ChahriyaPro.ViewModels"
+             xmlns:models="clr-namespace:ChahriyaPro.Models"
+             x:DataType="viewmodel:MainViewModel"
+             x:Class="ChahriyaPro.Views.MainPage"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Background}">
+
+    <Grid RowDefinitions="*, Auto">
+        
+        <!-- Main Content Area -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="25" Spacing="25">
+                
+                <!-- Premium Header Section -->
+                <Label Text="Bienvenue," Style="{StaticResource SubtitleLabel}" Margin="0" />
+                <Label Text="Chahriya Pro" Style="{StaticResource TitleLabel}" Margin="0, -5, 0, 10" />
+
+                <!-- Balance Card with Premium Gradient -->
+                <Frame Style="{StaticResource BalanceCard}" BorderColor="Transparent">
+                    <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                        <Label Text="SOLDE TOTAL" 
+                               TextColor="{StaticResource TextOnPrimary}" 
+                               FontSize="12" 
+                               HorizontalOptions="Center" 
+                               FontFamily="OpenSansSemibold" 
+                               Opacity="0.8" />
+                        <Label Text="{Binding FormattedBalance}" 
+                               TextColor="{StaticResource TextOnPrimary}" 
+                               FontSize="36" 
+                               HorizontalOptions="Center" 
+                               FontFamily="OpenSansSemibold" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Income and Expenses Summary Cards -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="15">
+                    
+                    <!-- Income Card -->
+                    <Frame Grid.Column="0" Style="{StaticResource CardFrame}" Padding="15" BorderColor="{StaticResource Gray300}">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="REVENU" TextColor="{StaticResource TextSecondary}" FontSize="11" FontFamily="OpenSansSemibold" />
+                            <Label Text="{Binding FormattedIncome}" TextColor="{StaticResource Success}" FontSize="18" FontFamily="OpenSansSemibold" />
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Expenses Card -->
+                    <Frame Grid.Column="1" Style="{StaticResource CardFrame}" Padding="15" BorderColor="{StaticResource Gray300}">
+                        <VerticalStackLayout Spacing="5">
+                            <Label Text="DÉPENSE" TextColor="{StaticResource TextSecondary}" FontSize="11" FontFamily="OpenSansSemibold" />
+                            <Label Text="{Binding FormattedExpenses}" TextColor="{StaticResource Danger}" FontSize="18" FontFamily="OpenSansSemibold" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <!-- Recent Transactions Section Header -->
+                <Grid ColumnDefinitions="*, Auto" Margin="0,10,0,0">
+                    <Label Grid.Column="0" Text="Transactions Récentes" Style="{StaticResource SubtitleLabel}" VerticalOptions="Center" />
+                    <Label Grid.Column="1" Text="Voir tout" TextColor="{StaticResource Primary}" FontSize="14" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToHistoryCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+
+                <!-- Recent Transactions List -->
+                <CollectionView ItemsSource="{Binding RecentTransactions}" HeightRequest="300">
+                    <CollectionView.EmptyView>
+                        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Padding="40">
+                            <Label Text="Aucune transaction" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Transaction">
+                            <Frame Style="{StaticResource CardFrame}" Padding="15" Margin="0,0,0,10" BorderColor="{StaticResource Gray200}">
+                                <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="15">
+                                    
+                                    <!-- Indicator Bar -->
+                                    <BoxView Grid.Column="0" WidthRequest="4" Color="{Binding AmountColor}" CornerRadius="2" VerticalOptions="Fill" />
+                                    
+                                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                                        <Label Text="{Binding Description}" FontSize="16" FontFamily="OpenSansSemibold" />
+                                        <Label Text="{Binding Date, StringFormat='{0:dd MMM yyyy}'}" FontSize="12" TextColor="{StaticResource TextSecondary}" />
+                                    </VerticalStackLayout>
+
+                                    <Label Grid.Column="2" 
+                                           Text="{Binding FormattedAmount}" 
+                                           TextColor="{Binding AmountColor}" 
+                                           FontSize="16" 
+                                           FontFamily="OpenSansSemibold" 
+                                           VerticalOptions="Center" />
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Floating Add Button Area -->
+        <Button Grid.Row="1" 
+                Text="+ Ajouter Transaction" 
+                Margin="25" 
+                Command="{Binding GoToAddTransactionCommand}" 
+                CornerRadius="25" 
+                HeightRequest="60" 
+                FontSize="18" />
+
+    </Grid>
+</ContentPage>

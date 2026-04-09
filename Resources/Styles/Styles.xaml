@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- 
+        FILE: Styles.xaml
+        LOCATION: Resources/Styles/
+        ROLE: Defines global styles for the application's controls (buttons, labels, entries).
+        DESIGN: Ultra Pro, Modern, and Premium dark theme with sleek elements.
+    -->
+
+    <!-- Global Label Style -->
+    <Style TargetType="Label">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- Main Page Title Style -->
+    <Style x:Key="TitleLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="Margin" Value="0,15,0,10" />
+    </Style>
+
+    <!-- Subtitle/Section Header Style -->
+    <Style x:Key="SubtitleLabel" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="Margin" Value="0,10,0,5" />
+    </Style>
+
+    <!-- Global Button Style -->
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="TextColor" Value="{StaticResource TextOnPrimary}" />
+        <Setter Property="FontFamily" Value="OpenSansSemibold" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="Padding" Value="20,12" />
+        <Setter Property="HeightRequest" Value="55" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Disabled">
+                        <VisualState.Setters>
+                            <Setter Property="BackgroundColor" Value="{StaticResource Gray400}" />
+                            <Setter Property="TextColor" Value="{StaticResource Gray600}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="0.95" />
+                            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <!-- Outlined Button Style -->
+    <Style x:Key="OutlinedButton" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BorderColor" Value="{StaticResource Primary}" />
+        <Setter Property="BorderWidth" Value="2" />
+        <Setter Property="TextColor" Value="{StaticResource Primary}" />
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="HeightRequest" Value="55" />
+    </Style>
+
+    <!-- Global Entry (Input) Style -->
+    <Style TargetType="Entry">
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray500}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="HeightRequest" Value="55" />
+        <Setter Property="Margin" Value="0,5,0,15" />
+    </Style>
+
+    <!-- Premium Card Style (Frame) -->
+    <Style x:Key="CardFrame" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="{StaticResource Surface}" />
+        <Setter Property="BorderColor" Value="{StaticResource Gray300}" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="Padding" Value="20" />
+        <Setter Property="Margin" Value="0,10" />
+    </Style>
+
+    <!-- Balance Card Style (Frame) -->
+    <Style x:Key="BalanceCard" TargetType="Frame">
+        <Setter Property="Background" Value="{StaticResource PremiumGradient}" />
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="Padding" Value="25" />
+        <Setter Property="Margin" Value="0,10" />
+    </Style>
+
+</ResourceDictionary>
